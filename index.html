@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>25PPH4CC10 — Statistical Mechanics and Thermodynamics</title>
+  <style>
+    :root {
+      --primary: #1f3864;
+      --primary-light: #2b4c84;
+      --accent: #0284c7;
+      --bg-canvas: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --tag-bg: #f1f5f9;
+      --highlight: #fef3c7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      color: var(--text-main);
+      background-color: var(--bg-canvas);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #0f172a 100%);
+      color: #ffffff;
+      padding: 3.5rem 1.5rem 2.5rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .badge-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #e2e8f0;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+
+    header .subtitle {
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      max-width: 780px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      overflow-x: auto;
+      padding: 0.85rem 0;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      padding: 2.5rem 0 4rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: #334155;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+      background: var(--tag-bg);
+      padding: 1rem;
+      border-radius: 6px;
+    }
+
+    .meta-item span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .meta-item strong {
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background-color: var(--tag-bg);
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background-color: #f8fafc;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      background-color: var(--tag-bg);
+      border: 1px solid var(--border);
+      font-weight: 500;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .resource-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      background: #fafafa;
+    }
+
+    .resource-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--primary);
+    }
+
+    .btn-download {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: var(--accent);
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-download:hover {
+      background-color: #0369a1;
+    }
+
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      background-color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.7rem;
+      }
+      section {
+        padding: 1.25rem;
+      }
+      nav ul {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="badge-bar">
+        <span class="badge">Semester IV</span>
+        <span class="badge">Core Course - 10</span>
+        <span class="badge">6 Hours / Week</span>
+        <span class="badge">5 Credits</span>
+      </div>
+      <h1>25PPH4CC10: Statistical Mechanics & Thermodynamics</h1>
+      <p class="subtitle">Department of Physics, School of Physical Sciences, St. Joseph’s College (Autonomous), Tiruchirappalli</p>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#assessment">Assessment</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    
+    <section id="overview">
+      <h2>Course Overview</h2>
+      <p>This postgraduate core course connects the microscopic details of constituents to macroscopic thermal properties of bulk matter. It covers classical and quantum ensembles, distribution laws, transport equations, fluctuations, and modern models of phase transitions.</p>
+      
+      <div class="meta-grid">
+        <div class="meta-item">
+          <span>Instructor</span>
+          <strong>Mr. G. Novin Senetra Roy</strong>
+        </div>
+        <div class="meta-item">
+          <span>Designation</span>
+          <strong>Assistant Professor in Physics</strong>
+        </div>
+        <div class="meta-item">
+          <span>Target Group</span>
+          <strong>II M.Sc. Physics</strong>
+        </div>
+        <div class="meta-item">
+          <span>Prescribed Textbook</span>
+          <strong>S. L. Gupta & V. Kumar (Pragati Prakashan)</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2>Learning Resources</h2>
+      <p>Download lecture slides, problem sets, and supplementary references below.</p>
+      <div class="resource-grid">
+        <div class="resource-card">
+          <h4>Unit I & II Notes</h4>
+          <p>Phase space, Liouville theorem, ensembles, and classical Maxwell-Boltzmann statistics.</p>
+          <a href="#" class="btn-download">Download PDF</a>
+        </div>
+        <div class="resource-card">
+          <h4>Unit III Notes</h4>
+          <p>Quantum statistics: Bose-Einstein condensation, Fermi-Dirac degeneracy, and liquid Helium.</p>
+          <a href="#" class="btn-download">Download PDF</a>
+        </div>
+        <div class="resource-card">
+          <h4>Unit IV & V Notes</h4>
+          <p>Transport theory, Brownian motion, Ising model, and critical exponents.</p>
+          <a href="#" class="btn-download">Download PDF</a>
+        </div>
+        <div class="resource-card">
+          <h4>Tutorial Problem Sets</h4>
+          <p>Curated numerical problems and CSIR-NET model questions for practice.</p>
+          <a href="#" class="btn-download">Download Problems</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <h2>Weekly Schedule</h2>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Weeks</th>
+              <th>Unit / Module</th>
+              <th>Topics Covered</th>
+              <th>Learning Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Weeks 1–3</strong></td>
+              <td>Unit I: Fundamentals</td>
+              <td>Entropy, thermodynamic potentials, phase space, Liouville theorem, microcanonical, canonical, and grand canonical ensembles.</td>
+              <td><span class="tag">CO1</span> <span class="tag">CO2</span></td>
+            </tr>
+            <tr>
+              <td><strong>Weeks 4–6</strong></td>
+              <td>Unit II: Classical Statistics</td>
+              <td>Micro/macro states, Maxwell-Boltzmann distribution, equipartition theorem, partition functions, microcanonical perfect gas.</td>
+              <td><span class="tag">CO3</span></td>
+            </tr>
+            <tr>
+              <td><strong>Weeks 7–9</strong></td>
+              <td>Unit III: Quantum Statistics</td>
+              <td>Density matrix, Bose-Einstein & Fermi-Dirac distributions, blackbody radiation, BEC, liquid Helium, electron gas.</td>
+              <td><span class="tag">CO3</span> <span class="tag">CO5</span></td>
+            </tr>
+            <tr>
+              <td><strong>Weeks 10–12</strong></td>
+              <td>Unit IV: Transport & Fluctuations</td>
+              <td>Boltzmann transport equations, thermal conductivity, energy fluctuations, random walk, Brownian movement, Fokker-Planck.</td>
+              <td><span class="tag">CO4</span></td>
+            </tr>
+            <tr>
+              <td><strong>Weeks 13–15</strong></td>
+              <td>Unit V: Phase Transitions</td>
+              <td>First/second order transitions, critical exponents, Yang-Lee theory, 1D Ising model, Bragg-Williams approximation.</td>
+              <td><span class="tag">CO2</span> <span class="tag">CO6</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="assessment">
+      <h2>Assessment Plan</h2>
+      <p>Evaluation is split between Continuous Internal Assessment (CIA) and the Semester Examination.</p>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Assessment Component</th>
+              <th>Mode / Format</th>
+              <th>Weightage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Component I</td>
+              <td>Online Multiple-Choice Test (JosTEL)</td>
+              <td>15 Marks</td>
+            </tr>
+            <tr>
+              <td>Component II</td>
+              <td>Written Assignment / Problem-solving seminar</td>
+              <td>20 Marks</td>
+            </tr>
+            <tr>
+              <td>Library Referencing</td>
+              <td>Evaluated at K3 Level</td>
+              <td>5 Marks</td>
+            </tr>
+            <tr>
+              <td>Mid-Semester Test</td>
+              <td>Written descriptive & quantitative exam (2 Hours)</td>
+              <td>30 Marks</td>
+            </tr>
+            <tr>
+              <td>End-Semester Test</td>
+              <td>Written descriptive & quantitative exam (2 Hours)</td>
+              <td>30 Marks</td>
+            </tr>
+            <tr>
+              <td><strong>Total Internal Assessment</strong></td>
+              <td><strong>Minimum PG passing mark: 50%</strong></td>
+              <td><strong>100 Marks</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Information</h2>
+      <div class="contact-card">
+        <p><strong>Mr. G. Novin Senetra Roy</strong></p>
+        <p>Assistant Professor, Department of Physics</p>
+        <p>St. Joseph’s College (Autonomous), Tiruchirappalli - 620 002, Tamil Nadu, India</p>
+        <p>Email: <a href="mailto:novinsenetraroy_ph2@mail.sjctni.edu">novinsenetraroy_ph2@mail.sjctni.edu</a></p>
+        <p>Office Hours: Monday – Friday, 3:30 PM – 4:30 PM</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Department of Physics, St. Joseph’s College (Autonomous). Built for GitHub Pages.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
